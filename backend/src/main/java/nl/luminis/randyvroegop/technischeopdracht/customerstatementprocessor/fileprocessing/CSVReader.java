@@ -1,7 +1,7 @@
 package nl.luminis.randyvroegop.technischeopdracht.customerstatementprocessor.fileprocessing;
 
 import lombok.extern.slf4j.Slf4j;
-import nl.luminis.randyvroegop.technischeopdracht.customerstatementprocessor.dto.Record;
+import nl.luminis.randyvroegop.technischeopdracht.customerstatementprocessor.dto.customerstatementrecords.Record;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

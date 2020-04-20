@@ -2,10 +2,6 @@ import { LitElement, html, css } from 'lit-element';
 
 export class UploadPanelLuminis extends LitElement {
 
-    connectedCallback() {
-        super.connectedCallback();
-    }
-
     static get styles() {
         return css`
         form {
@@ -26,19 +22,22 @@ export class UploadPanelLuminis extends LitElement {
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const extension = file.name.substr((file.name.lastIndexOf('.') + 1));
+            const filename = file.name;
             const content = await new Response(file).text();
             if (/(csv|xml)$/ig.test(extension)) {
-                this.emitFileContent(content, extension);
+                this.emitFileContent(content, extension, filename);
+            } else {
+                alert("This alertbox could use some work if it comes down to styling, but the important thing is you uploaded a file that is not CSV or XML.");
             }
         }
 
         this.shadowRoot.getElementById("fileUpload").value = "";
     }
 
-    emitFileContent(file, extension) {
+    emitFileContent(file, extension, filename) {
         let event = new CustomEvent('file-uploaded', {
             detail: {
-                message: { file, extension }
+                message: { file, extension, filename }
             }
         });
         this.dispatchEvent(event);

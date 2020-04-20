@@ -4,14 +4,19 @@ import { UploadPanelLuminis } from '../fileupload/upload-panel-luminis';
 
 export class DashboardLuminis extends LitElement {
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.reports = [];
+  }
+
   static get properties() {
     return {
       reports: { type: Array }
     }
   }
 
-  async handleFileUpload({ file, extension }) {
-    const url = `http://localhost:8080/analyse/${extension}`;
+  async handleFileUpload({ file, extension, filename }) {
+    const url = `http://localhost:8080/analyze/${extension}`;
     const response = await fetch(url, {
       method: 'POST',
       mode: 'cors',
@@ -23,13 +28,19 @@ export class DashboardLuminis extends LitElement {
       referrerPolicy: 'no-referrer',
       body: JSON.stringify({ file })
     });
-    console.log(response.json());
+
+    const report = await response.json();
+
+    report.timestamp = new Date().toISOString();
+    report.filename = filename;
+
+    this.reports = [...this.reports, report];
   }
 
   render() {
     return html`
       <upload-panel-luminis @file-uploaded="${e => this.handleFileUpload(e.detail.message)}"></upload-panel-luminis>
-      <reporting-panel-luminis></reporting-panel-luminis>
+      <reporting-panel-luminis .reports="${this.reports}"></reporting-panel-luminis>
     `;
   }
 }

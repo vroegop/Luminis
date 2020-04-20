@@ -1,6 +1,6 @@
 package nl.luminis.randyvroegop.technischeopdracht.customerstatementprocessor.fileprocessing;
 
-import nl.luminis.randyvroegop.technischeopdracht.customerstatementprocessor.dto.Record;
+import nl.luminis.randyvroegop.technischeopdracht.customerstatementprocessor.dto.customerstatementrecords.Record;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
