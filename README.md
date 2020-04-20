@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/vroegop/Luminis.svg?branch=master)](https://travis-ci.com/vroegop/Luminis)
+
 # Getting Started
 
 ## Module explanation
