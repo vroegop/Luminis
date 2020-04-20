@@ -28,12 +28,14 @@ or an actual frontend hosting server via the build pipeline.
     * In this case for simplicity purposes: `backend/src/main/resources/static`
     * This could be automated by the eirslett mvn plugin
 3. Trigger the backend build and start the application
+    * `cd backend`
     * `mvn clean install spring-boot:run`
 
 ## How does the app itself work
 
 1. Start the app (it comes with frontend precompiled):
-    * `mvn install spring-boot:run`h
+    * `cd backend`
+    * `mvn install spring-boot:run`
 2. Open the dashboard:
     * `http://localhost:8080/index.html`
 3. Upload your file (CSV or XML only)
