@@ -66,6 +66,19 @@ The file seems to be encoded using ISO-8859-2 encoding. This is not supported
 by default in JavaScript. One of my next fixes would be to fix this encoding
 and preventing characters to be lost in translation.
 
+For the build pipeline, static code analysis with SonarCloud would be nice.
+Github scans the package.json in frontend projects for security issues. I
+am not sure if it scans the subfolders (like `frontend` we use now) but
+I would investigate on that if this were a real project. Also, a security scan
+for the backend dependencies would be nice. SonarCloud also has testreport
+capabilities which I would like to use to display test coverage.
+
+I have not tested all classes in this application because it is not very
+interesting to test the RestResource class for example, but I have
+tested the classes that contain business logic (the XML and CSV parsing classes
+and the actual analysis of records class). Also, I tested the service class
+(cspAnalyzerOrchestration) to show you I know how to mock and spy classes.
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 
